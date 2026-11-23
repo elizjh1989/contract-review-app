@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contract Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="m9 14 2 2 4-4"/></svg>
+      </span>
+      <h1>Contract Review</h1>
+    </div>
+    <label class="btn btn-primary" for="file-input">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg>
+      <span id="upload-label">Upload contract</span>
+    </label>
+    <input id="file-input" type="file" accept="application/pdf,.pdf" hidden>
+  </header>
+
+  <main class="layout">
+    <!-- Left: contract -->
+    <section class="panel" aria-label="Contract">
+      <div class="panel-header">
+        <div class="title-group">
+          <h2>Contract</h2>
+          <span id="file-chip" class="chip" hidden></span>
+        </div>
+        <div id="toolbar" class="toolbar" hidden>
+          <button id="clear-btn" class="link-btn" type="button">Remove</button>
+          <span class="divider" aria-hidden="true"></span>
+          <button id="zoom-out" class="icon-btn" type="button" aria-label="Zoom out" title="Zoom out">−</button>
+          <span id="zoom-label" class="zoom-label" aria-live="polite">100%</span>
+          <button id="zoom-in" class="icon-btn" type="button" aria-label="Zoom in" title="Zoom in">+</button>
+        </div>
+      </div>
+      <div class="stage">
+        <label id="dropzone" class="dropzone" for="file-input">
+          <span class="dz-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13 2.5-2.5 2.5 2.5"/></svg>
+          </span>
+          <span class="dz-title">Drop a PDF contract here</span>
+          <span class="dz-sub">or <u>browse your files</u></span>
+          <span class="dz-hint">PDF files only</span>
+        </label>
+        <p id="upload-error" class="error" role="alert" hidden></p>
+        <div id="pdf-frame" class="pdf-frame" hidden>
+          <div class="pdf-loading" aria-hidden="true"><span class="spinner"></span></div>
+          <iframe id="pdf-viewer" title="Contract preview"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: chat -->
+    <section class="panel" aria-label="Chat">
+      <div class="panel-header">
+        <h2>Chat</h2>
+      </div>
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="msg bot">Upload a contract, then ask me questions about it.</div>
+      </div>
+      <div id="suggestions" class="suggestions" aria-label="Suggested questions">
+        <button type="button" class="suggestion">Summarize the key obligations</button>
+        <button type="button" class="suggestion">What are the payment terms?</button>
+        <button type="button" class="suggestion">How can this be terminated?</button>
+      </div>
+      <form id="chat-form" class="chat-form" autocomplete="off">
+        <input id="chat-input" type="text" placeholder="Ask a question about the contract…" aria-label="Message">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

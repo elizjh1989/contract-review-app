@@ -1,0 +1,10 @@
+# Private settings (webhook URL)
+config.js
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.claude/
